@@ -7,6 +7,7 @@
     cd fxcharts
     npm install @syncfusion/ej2-ng-charts --save
     ng g c chart-candle1
+    ng g service rest
 ```
 
 ### run:

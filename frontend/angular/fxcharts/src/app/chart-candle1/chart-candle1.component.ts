@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { RestService, Product } from '../rest.service';
+//import { Router } from '@angular/router';
 
 const dataSource = [{
   date: new Date(1994, 2, 1),
@@ -149,9 +151,14 @@ const dataSource = [{
 })
 export class ChartCandle1Component implements OnInit {
 
+  products: Product[] = [];
+
   svg:SafeHtml;
   image:string;
-  constructor(private sanitizer: DomSanitizer) { 
+  constructor(
+    public rest: RestService,
+    //private router: Router,
+    private sanitizer: DomSanitizer) { 
       this.image = "";
       this.svg = this.svg = this.sanitizer.bypassSecurityTrustHtml(this.drawSvg());
     }
@@ -358,5 +365,12 @@ export class ChartCandle1Component implements OnInit {
 
   }  
 
-  ngOnInit(): void {}
+  getProducts(): void {
+    this.rest.getProducts().subscribe((resp: any) => {
+      console.log("resp=",resp);
+      this.products = resp.Data;
+      console.log(this.products);
+    });
+  }  
+  ngOnInit(): void {this.getProducts();}
 }
