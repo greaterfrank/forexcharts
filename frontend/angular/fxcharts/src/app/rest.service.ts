@@ -51,7 +51,8 @@ export class RestService {
   */       
   getProducts(): Observable<any> {
     //return this.http.get<Product>(endpoint + 'products').pipe(catchError(this.handleError));
-    return this.http.get<Product>(endpoint + 'getItem').pipe(catchError(this.handleError));
+    //return this.http.get<Product>(endpoint + 'getItem').pipe(catchError(this.handleError));
+    return this.http.get<Product>(endpoint + 'getItem.php').pipe(catchError(this.handleError));
   }
 
   getProduct(id: string): Observable<any> {
