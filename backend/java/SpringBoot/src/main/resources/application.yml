@@ -1,0 +1,12 @@
+server:
+    port: 8080
+spring :
+    datasource :
+        url : jdbc:mysql://${MYSQL_HOST:localhost}:3306/fxratedb
+        username : dbuser
+        password : dbpass
+    jackson :
+        time-zone : GMT-4
+        date-format : yyyy-MM-dd HH:mm:ss
+        joda-date-time-format : yyyy-MM-dd HH:mm:ss
+
