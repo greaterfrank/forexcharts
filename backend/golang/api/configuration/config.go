@@ -8,8 +8,16 @@ import (
 	"path/filepath"
 )
 
+type DBConfig struct {
+	Addr   string `json:"addr"`
+	User   string `json:"user"`
+	Passwd string `json:"passwd"`
+	DBName string `json:"dbname"`
+}
+
 type Configuration struct {
-	Port string `json:"port"`
+	Port     string   `json:"port"`
+	DbConfig DBConfig `json:"dbConfig"`
 }
 
 func LoadIniFiles(iniFilename string) (*Configuration, error) {
